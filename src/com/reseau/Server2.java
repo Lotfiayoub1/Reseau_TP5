@@ -7,6 +7,7 @@ import java.io.InputStreamReader;
 import java.io.PrintWriter;
 import java.net.ServerSocket;
 import java.net.Socket;
+import java.util.Arrays;
 
 public class Server2 {
 
@@ -40,10 +41,27 @@ public class Server2 {
                     out.println("la longueur de la phrase est "+ str2.length());
                     out.flush();
 
-                    System.out.println("<SERVER> : attend la réponse du client");
-                    //BufferedReader bf2 = new BufferedReader(in);
-                    String str1 = bf.readLine();
-                    System.out.println("<SERVER> From the client : "+ str1);
+
+                    client_sock.close();
+                }else{
+                    PrintWriter out = new PrintWriter(client_sock.getOutputStream());
+                    out.println("Le serveur Va trier la phrase!!!" );
+                    out.flush();
+                    //System.out.println("Client connected");
+                    System.out.println("<SERVER> waiting for client input ");
+
+                    BufferedReader bf2 = new BufferedReader(in);
+                    String str2 = bf2.readLine();
+                    System.out.println("<SERVER> From the client : "+ str2);
+
+                    char[] StringtoChar = str2.toCharArray();
+                    Arrays.sort(StringtoChar);
+                    String SortedString = new String(StringtoChar);
+                    out.println("The Sorted String is : " + SortedString);
+                    //System.out.println("The Unsorted String is : " + str2);
+                    //System.out.println("The Sorted String is : " + SortedString);
+                    out.flush();
+
 
                     client_sock.close();
                 }

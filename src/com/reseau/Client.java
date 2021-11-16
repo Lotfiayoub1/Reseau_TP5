@@ -36,9 +36,6 @@ public class Client {
         String str1 =bf.readLine();
         System.out.println("<CLIENT> From the server : "+ str1);
 
-
-        out.println(str1+" \n");
-        out.flush();
         sock_client.close();
 
     }

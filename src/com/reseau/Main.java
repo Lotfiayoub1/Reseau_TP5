@@ -18,13 +18,11 @@ public class Main {
             menu = s.nextInt();
             switch (menu){
                 case 1:
+
+                case 2:
                     Client c = new Client("localhost",9997);
                     c.lancerClient(menu);
 
-                    break;
-
-                case 2:
-                    System.out.println("Trier le mot envoyer");
                     break;
                 case 3:
                     menu = 0;
